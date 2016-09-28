@@ -1,0 +1,26 @@
+<ion-view view-title="Novedades">
+  <ion-content>
+    <ion-list class="animate-ripple">
+      <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="blinds();" ng-repeat="producto in novedades">
+          <img src="../img/coto.png">
+          <h2>{{producto.descripcion}}</h2>
+          <p>Colchon para homeworking!!</p>
+          <a class="Burtton icon icon ion-ios-cart"  href="#/app/newsdetail/{{producto.codigo}}"></a>
+          
+      </ion-item>
+            
+<!--      <ion-item ng-repeat="producto in novedades" href="#/app/newsdetail/{{producto.codigo}}"> -->
+<!--        {{producto.descripcion}} -->
+<!--      </ion-item> -->
+    </ion-list>
+  </ion-content>
+<!--  <ion-footer-bar align-title="left" class="bar-positive">-->
+<!--  <div class="buttons">-->
+<!--    <button class="button">Left Button</button>-->
+<!--  </div>-->
+<!--  <h1 class="title">{{bartittle}}</h1>-->
+<!--  <div class="buttons" ng-click="doSomething()">-->
+<!--    <button class="button">Right Button</button>-->
+<!--  </div>-->
+<!--</ion-footer-bar>-->
+</ion-view>
