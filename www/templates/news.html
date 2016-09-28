@@ -1,17 +1,12 @@
 <ion-view view-title="Novedades">
   <ion-content>
     <ion-list class="animate-ripple">
-      <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="blinds();" ng-repeat="producto in novedades">
+      <ion-item class="item-icon-right item-avatar" ng-repeat="producto in novedades">
           <img src="../img/coto.png">
-          <h2>{{producto.descripcion}}</h2>
+          <a style="text-decoration: none; color: black;" href="#/app/newsdetail/{{producto.codigo}}">{{producto.descripcion}}</a>
           <p>Colchon para homeworking!!</p>
-          <a class="Burtton icon icon ion-ios-cart"  href="#/app/newsdetail/{{producto.codigo}}"></a>
-          
+          <i class="icon icon ion-ios-cart" ng-click="shopping(producto.codigo);"><span class="badge badge-assertive icon-badge">{{shoppAmmount}}</span></i>
       </ion-item>
-            
-<!--      <ion-item ng-repeat="producto in novedades" href="#/app/newsdetail/{{producto.codigo}}"> -->
-<!--        {{producto.descripcion}} -->
-<!--      </ion-item> -->
     </ion-list>
   </ion-content>
 <!--  <ion-footer-bar align-title="left" class="bar-positive">-->
@@ -24,3 +19,4 @@
 <!--  </div>-->
 <!--</ion-footer-bar>-->
 </ion-view>
+

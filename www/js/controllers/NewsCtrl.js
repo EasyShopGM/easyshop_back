@@ -1,4 +1,5 @@
-﻿app.controller('NewsCtrl', function ($scope, $ionicLoading, $http, $ionicPopup, $stateParams, SrvCall,$interval, ionicMaterialInk, ionicMaterialMotion) {
+﻿app.controller('NewsCtrl', function ($rootScope, $scope, $ionicLoading, $http, $ionicPopup, $stateParams, SrvCall,$interval, ionicMaterialInk, ionicMaterialMotion) {
+    
     //ionic.material.ink.displayEffect();
     ionicMaterialInk.displayEffect();
    
@@ -83,29 +84,33 @@
 
     $scope.blinds();
     
-        //   //inicia el evento cargando y bloquea la pantalla
-        //   $ionicLoading.show({
-        //       template: '<ion-spinner icon="android"></ion-spinner>'
-        //   }); 
-        
-        // $http({
-        //     method: 'GET',
-        //     url: 'dummy/productos.json',
-        //     headers: {'Accept': 'application/json'}
-        // }).success(function(response){
-        //     $scope.novedades = response.productos;
-        //     console.log(response);
-        //     //Apaga el evento cargando
-        //     $ionicLoading.hide();
-        // }).error(function(data, status){
-        //     //Apaga el evento cargando
-        //     $ionicLoading.hide();
-        //         $ionicPopup.alert({
-        //                 title: 'Ups!',
-        //                 template: data.error,
-        //                 okText: 'OK!'
-        //         });     
-        // });
-  
-  
+    $scope.shopping = function(productId){
+      $scope.data = {};
+      // An elaborate, custom popup
+      var shopPopup = $ionicPopup.show({
+        template: '<input type="number" ng-model="data.ammount">',
+        title: 'Ingrese cantidad',
+        subTitle: 'En numeros por unidad',
+        scope: $scope,
+        buttons: [
+          { text: 'Cancelar' },
+          {
+            text: '<b>Guardar</b>',
+            type: 'button-positive',
+            onTap: function(e) {
+              if (!$scope.data.ammount) {
+                //don't allow the user to close unless he enters wifi password
+                e.preventDefault();
+              } else {
+                $scope.data.productId = productId;
+                //TODO GUSTAVO ESTO HAY QUE CAMBIARLO POR EL VALOR QUE ESTA EN EL SHOPPCART
+                $rootScope.shoppAmmount = $scope.data.ammount;
+                console.log($scope.data); 
+              }
+            }
+          }
+        ]
+      });
+    }
+   
 });
